@@ -1,7 +1,10 @@
 Learn C The Hard Way
 =======
 
-Exercise #
+Exercise 12
+----
+
+Sizes and Arrays
 
 
 
@@ -32,7 +35,7 @@ Extra Credit
 
 
 
-End Of Lecture 
+End Of Lecture 12
 =====
 
 

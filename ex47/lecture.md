@@ -1,8 +1,10 @@
 Learn C The Hard Way
 =======
 
-Exercise #
+Exercise 47
+----
 
+A Fast URL Router
 
 
 
@@ -32,7 +34,7 @@ Extra Credit
 
 
 
-End Of Lecture 
+End Of Lecture 47
 =====
 
 

@@ -2,6 +2,7 @@ Learn C The Hard Way
 =======
 
 Exercise 1
+----
 
 Dust Off That Compiler
 

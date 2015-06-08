@@ -1,7 +1,10 @@
 Learn C The Hard Way
 =======
 
-Exercise #
+Exercise 14
+----
+
+Writing and Using Functions
 
 
 
@@ -32,7 +35,7 @@ Extra Credit
 
 
 
-End Of Lecture 
+End Of Lecture 14
 =====
 
 

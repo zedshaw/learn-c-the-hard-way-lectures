@@ -1,7 +1,9 @@
 Learn C The Hard Way
 =======
 
-Exercise 0 Lecture
+Exercise 0
+----
+
 Installing Software
 
 

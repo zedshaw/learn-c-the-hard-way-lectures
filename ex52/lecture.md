@@ -1,10 +1,10 @@
 Learn C The Hard Way
 =======
 
-Exercise 45
+Exercise 52
 ----
 
-A Simple TCP/IP Client
+Hacking and Improving Your Server
 
 
 
@@ -34,7 +34,7 @@ Extra Credit
 
 
 
-End Of Lecture 45
+End Of Lecture 52
 =====
 
 
