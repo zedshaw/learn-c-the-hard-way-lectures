@@ -1,3 +1,5 @@
+Code for the book is licensed using the MIT license:
+
 The MIT License (MIT)
 
 Copyright (c) 2015 Zed A. Shaw
@@ -20,3 +22,10 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
+------
+
+Everything else, including lecture slides, and anything used in the videos or
+book are fully copyright by Zed A. Shaw and are not free to use without
+permission.
+
+The Reveal.js source is licensed according to their wishes.
