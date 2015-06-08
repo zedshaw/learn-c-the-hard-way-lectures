@@ -1,5 +1,38 @@
 Learn C The Hard Way
 =======
 
-Exercise # Lecture
+Exercise #
+
+
+
+
+The Plan
+====
+
+
+The Code
+====
+
+
+
+The Analysis
+====
+
+
+
+
+Breaking It
+====
+
+
+
+
+Extra Credit
+====
+
+
+
+End Of Lecture 
+=====
+
 
