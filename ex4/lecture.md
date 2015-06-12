@@ -11,26 +11,20 @@ Using a Debugger
 The Plan
 ====
 
+* See how GDB works (LLDB on OSX).
+* Cover the quick reference.
+* Debug a program.
 
-The Code
+
+
+Using GDB
 ====
 
 
 
-The Analysis
+Using LLDB
 ====
 
-
-
-
-Breaking It
-====
-
-
-
-
-Extra Credit
-====
 
 
 
