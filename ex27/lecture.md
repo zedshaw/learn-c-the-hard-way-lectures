@@ -8,28 +8,60 @@ Creative and Defensive Programming
 
 
 
-The Plan
+Read The Book
+====
+
+This video is a demonstration of the concepts in the book.
+
+Go read the book.
+
+
+
+Demonstration
+====
+
+I will demonstrate each of the following:
+
+* Fail early and openly.
+* Document assumptions.
+* Prevention over documentation.
+* Automate everything.
+* Simplify and clarify.
+* Question authority.
+
+
+
+Fail Early and Openly
 ====
 
 
-The Code
+
+Document Assumptions
 ====
 
 
 
-The Analysis
+Prevention over Documentation
 ====
 
 
 
-
-Breaking It
+Automate Everything
 ====
 
 
 
+Simplify and Clarify
+====
 
-Extra Credit
+
+
+Question Authority
+====
+
+
+
+Bonus: Assume Nothing
 ====
 
 
