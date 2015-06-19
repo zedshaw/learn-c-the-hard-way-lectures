@@ -1,0 +1,160 @@
+About Devpkg
+============
+
+This is a small little project I'm tinkering on for my book
+[Learn C The Hard Way](http://c.learncodethehardway.org) and I hope to 
+accomplish a few things with it:
+
+1. Teach how to use the bstring and APR libraries.
+2. Create a simple install tool for people reading the book.
+3. Change how packages are installed so that it's developer controlled.
+
+Goals #1 and #2 are coming along and they should keep this project
+simple and easy to understand.  Right now the code is just a quick
+thing I whipped up to see if it'd work for the book.  It's definitely
+not the ideal version students will see.
+
+Goal #3 however is a more amibitious idea I have to create an alternative
+install system that is controlled by the creators of software, not
+the maintainers of operating systems.  To accomplish that goal
+I'm going with a few design ideas:
+
+1. It relies entirely on the proliferation of standardized build systems
+   like autotools, make, gems, and eggs.
+2. It relies on the proliferation of easy public hosting of source code
+   repositories and .tar.gz or .tar.bz2 files.  Basically you point it
+   at a git repo or source tar and it'll figure it out.
+3. There is no central repository of packages outside the author's control.
+   Everything about how to build the packge resides in the project official
+   repository.
+4. Dependencies are tracked by URLs so no chance of name collisions and
+   weird naming schemes.
+5. There is no facility to add "off grid" patches to work around build
+   or portability issues, instead, fork the author's repo and give them
+   the patch.  If they don't accept it, then have people install the
+   fork.
+
+The idea behind this is that there's been a shift in how software is
+distributed such that you don't need to have some middleman package
+manager "bless" packages for you.  Most programmers end up installing
+from source using git, hg, or tar anyway.  With devpkg, you're just
+automating and standardizing what programmers already do anyway.
+
+Current Features
+================
+
+It's just one source file and a couple support files, but it mostly
+works.  You can currently do this:
+
+* Install anything that curl or git can download that has at least
+  a Makefile.
+* Keep track of the URLs you've installed.
+* Install a DEPENDS file an author created which will install
+  dependencies for you.
+* List what you've installed already.
+* Do a manual fetch then build so you can inspect the results.
+
+None of this is very well implemented, but it currently works.  Notice
+there's also no "uninstall" yet, since I still have to figure that
+part out.
+
+
+Getting Started
+===============
+
+First off, grab the source:
+
+  git clone https://git.gitorious.org/devpkg/devpkg.git
+  cd devpkg
+
+Then install APR and APR-util from:
+
+  http://apr.apache.org/download.cgi
+
+Or look in the DEPENDS file for the URLs.
+
+Install those, sorry devpkg can't help you there yet.
+
+Once that's installed, run make:
+
+  make && sudo make install
+
+That'll make a binary in the local dir called devpkg.
+
+Try building something, like a small fork of an SRP library
+I created:
+
+  devpkg -I git://github.com/zedshaw/srpmin.git
+
+If that works, then list out what you've installed:
+
+  devpkg -L
+
+Try my depends file for devpkg:
+
+  devpkg -I DEPENDS
+
+That will reinstall them, and if apr-util complains it can't
+find APR then use -c to add configure options:
+
+  devpkg -I http://mirror.its.uidaho.edu/pub/apache//apr/apr-util-1.3.12.tar.gz -c --with-apr=/usr/local/apr
+
+If that works, you can see that the installs are idempotent by doing:
+
+  devpkg -I DEPENDS
+
+Notice also that you can point it at a tar.gz or tar.bz2 on the network
+or in a local file.  Try this to install zeromq:
+
+  devpkg -I http://download.zeromq.org/zeromq-2.1.9.tar.gz
+
+Here's how you'd install Lua on an OSX system by using -m to pass
+a different make target:
+
+  devpkg -I http://www.lua.org/ftp/lua-5.1.4.tar.gz -m macosx
+
+Change "-m macosx" to "linux" or whatever your platform is.
+
+It probably can't install everything, but try as many things as you can
+and tell me what needs to change to make it install stuff.
+
+If you want to manually build a project then there's the -F (fetch) and
+-B (build commands).  You could redo Lua like this:
+
+
+  devpkg -F http://www.lua.org/ftp/lua-5.1.4.tar.gz
+  devpkg -B http://www.lua.org/ftp/lua-5.1.4.tar.gz -m macosx
+
+This will also force it to be installed even if it already is, so you
+can rebuild and reinstall if you have to.
+
+Future Ideas
+============
+
+For removing software, I'm thinking it'd be nice to have devpkg do an
+rsync backup of key /usr/local directories, and use that to see what
+a piece of software installed.  It would keep track of that and then
+when you uninstall it'd just remove those files.  This would also
+give you a backup of /usr/local so you could revert an install easily.
+
+Probably going to switch to using Sqlite3 for the database, but I'm
+going to use the ARP-util database drivers so that you could point 
+this at a central database for storing installed/configured packages
+for your machines.
+
+I'll beef up the DEPENDS file so that it's more structured and allows
+the author to indicate alternative make targets and configure options
+for different platforms.  For example, the ability to map OSX machines
+to the right make target for the Lua install.
+
+I may try to make it work on Windows by sticking to APR and other
+portable libraries.  Could be nice to have a standard source install
+tool that worked on Windows too.
+
+
+WARNING
+=======
+
+This is a super hack and it's probably not secure.  Don't go installing
+random things off the internet without checking first.
+
