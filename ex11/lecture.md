@@ -48,7 +48,7 @@ Extra Credit
   do you get?
 * Do the inverse for *name*, trying to treat it like an array
   of *int* and print it out one *int* at a time.  What
-  does Valgrind think of that?
+  does the debugger think of that?
 * In how many other ways can you print this out?
 
 

@@ -55,7 +55,7 @@ Extra Credit
 * Pass in the wrong function for the *compare_cb* and see what
   the C compiler complains about.
 * Pass in NULL and watch your program seriously bite it.  Then, run
-  *Valgrind* and see what that reports.
+  the debugger and see what that reports.
 * Write another sorting algorithm, then change *test_sorting* so
   that it takes *both* an arbitrary sort function and the sort function's
   callback comparison.  Use it to test both of your algorithms.
