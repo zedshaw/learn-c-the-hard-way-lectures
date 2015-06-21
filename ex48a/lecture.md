@@ -76,7 +76,7 @@ This will be *HARD*!  Try it your best, and take it piece by piece.  You can do 
 
 
 
-End Of Lecture 48
+End Of Lecture 48a
 =====
 
 

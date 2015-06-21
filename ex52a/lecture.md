@@ -4,7 +4,10 @@ Learn C The Hard Way
 Exercise 52
 ----
 
-Hacking and Improving Your Server
+Hacking and Improving Your Server:
+
+Project Description
+----
 
 
 
@@ -12,29 +15,39 @@ The Plan
 ====
 
 
-The Code
+
+The Purpose
 ====
 
 
 
-The Analysis
+The Requirements
+====
+
+
+
+The Requirements
+====
+
+
+
+The Clues
+====
+
+
+
+Important References
+====
+
+
+
+Encouragement
 ====
 
 
 
 
-Breaking It
-====
-
-
-
-
-Extra Credit
-====
-
-
-
-End Of Lecture 52
+End Of Lecture 52a
 =====
 
 

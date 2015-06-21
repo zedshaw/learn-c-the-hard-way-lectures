@@ -4,7 +4,10 @@ Learn C The Hard Way
 Exercise 50
 ----
 
-Routing the Statistics
+Routing The Statistics
+
+Project Description
+----
 
 
 
@@ -12,29 +15,38 @@ The Plan
 ====
 
 
-The Code
+
+The Purpose
 ====
 
 
 
-The Analysis
+The Requirements
 ====
 
 
 
-
-Breaking It
+The Requirements
 ====
 
 
 
-
-Extra Credit
+The Clues
 ====
 
 
 
-End Of Lecture 50
+Important References
+====
+
+
+
+Encouragement
+====
+
+
+
+End Of Lecture 50a
 =====
 
 

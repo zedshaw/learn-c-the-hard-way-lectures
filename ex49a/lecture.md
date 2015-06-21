@@ -6,35 +6,51 @@ Exercise 49
 
 A Statistics Server
 
+Project Description
+----
+
 
 
 The Plan
 ====
 
 
-The Code
-====
 
 
-
-The Analysis
-====
-
-
-
-
-Breaking It
+The Purpose
 ====
 
 
 
 
-Extra Credit
+The Requirements
 ====
 
 
 
-End Of Lecture 49
+
+The Requirements
+====
+
+
+
+
+The Clues
+====
+
+
+
+Important References
+====
+
+
+
+Encouragement
+====
+
+
+
+End Of Lecture 49a
 =====
 
 

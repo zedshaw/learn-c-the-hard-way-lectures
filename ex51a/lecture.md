@@ -6,35 +6,48 @@ Exercise 51
 
 Storing the Statistics
 
+Project Description
+----
+
 
 
 The Plan
 ====
 
 
-The Code
-====
 
-
-
-The Analysis
-====
-
-
-
-
-Breaking It
+The Purpose
 ====
 
 
 
 
-Extra Credit
+The Requirements
 ====
 
 
 
-End Of Lecture 51
+The Requirements
+====
+
+
+
+The Clues
+====
+
+
+
+Important References
+====
+
+
+
+Encouragement
+====
+
+
+
+End Of Lecture 51a
 =====
 
 

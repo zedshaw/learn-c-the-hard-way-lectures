@@ -1,10 +1,13 @@
 Learn C The Hard Way
 =======
 
-Exercise 49
+Exercise 48
 ----
 
-A Statistics Server
+A Statistics Server:
+
+Solution
+----
 
 
 
@@ -12,29 +15,27 @@ The Plan
 ====
 
 
-The Code
-====
 
 
-
-The Analysis
-====
-
-
-
-
-Breaking It
+The Purpose
 ====
 
 
 
 
-Extra Credit
+The Setup
 ====
 
 
 
-End Of Lecture 49
+
+
+The Final Code
+====
+
+
+
+End Of Lecture 49b
 =====
 
 

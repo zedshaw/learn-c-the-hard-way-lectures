@@ -6,35 +6,35 @@ Exercise 51
 
 Storing the Statistics
 
+Solution
+----
+
 
 
 The Plan
 ====
 
 
-The Code
-====
 
 
-
-The Analysis
-====
-
-
-
-
-Breaking It
+The Purpose
 ====
 
 
 
 
-Extra Credit
+The Setup
 ====
 
 
 
-End Of Lecture 51
+
+The Final Code
+====
+
+
+
+End Of Lecture 51b
 =====
 
 

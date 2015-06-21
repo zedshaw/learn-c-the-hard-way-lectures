@@ -6,35 +6,30 @@ Exercise 52
 
 Hacking and Improving Your Server
 
+Solution
+----
+
 
 
 The Plan
 ====
 
 
-The Code
-====
 
 
-
-The Analysis
-====
-
-
-
-
-Breaking It
+The Purpose
 ====
 
 
 
 
-Extra Credit
+
+The Final Code
 ====
 
 
 
-End Of Lecture 52
+End Of Lecture 52b
 =====
 
 

@@ -6,35 +6,42 @@ Exercise 50
 
 Routing the Statistics
 
+Solution
+----
+
 
 
 The Plan
 ====
 
 
-The Code
+
+The Purpose
 ====
 
 
 
-The Analysis
+The Setup
 ====
 
 
 
-
-Breaking It
+The Server
 ====
 
 
 
-
-Extra Credit
+The Echo
 ====
 
 
 
-End Of Lecture 50
+The Final Code
+====
+
+
+
+End Of Lecture 50b
 =====
 
 
