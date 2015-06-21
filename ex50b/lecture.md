@@ -1,10 +1,10 @@
 Learn C The Hard Way
 =======
 
-Exercise 48
+Exercise 50
 ----
 
-A Simple Network Server
+Routing the Statistics
 
 
 
@@ -34,7 +34,7 @@ Extra Credit
 
 
 
-End Of Lecture 48
+End Of Lecture 50
 =====
 
 
