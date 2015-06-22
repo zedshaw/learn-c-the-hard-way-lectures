@@ -14,11 +14,7 @@ Solution
 The Plan
 ====
 
-
-
-
-The Purpose
-====
+Show you how I solved the problem of storing the statistics to disk.
 
 
 
@@ -26,6 +22,9 @@ The Purpose
 The Setup
 ====
 
+1. I first wrote a simple storage backend.
+2. Then I tested it really well.
+3. Then I worked it into the server at key points.
 
 
 
