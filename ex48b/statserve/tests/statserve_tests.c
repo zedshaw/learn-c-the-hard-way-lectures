@@ -1,21 +1,17 @@
 #include "minunit.h"
-#include <statserve.h>
+#include <dlfcn.h>
+#include "statserve.h"
 
-
-char *test_statserve()
+char *test_dummy()
 {
-
-    // mu_assert(echo_server("127.0.0.1", "7899") == 0, "Failed to start echo server.");
-
     return NULL;
 }
-
 
 char *all_tests()
 {
     mu_suite_start();
 
-    mu_run_test(test_statserve);
+    mu_run_test(test_dummy);
 
     return NULL;
 }

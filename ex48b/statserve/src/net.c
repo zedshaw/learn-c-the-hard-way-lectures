@@ -1,13 +1,19 @@
+#include <stdlib.h>
+#include <sys/select.h>
+#include <stdio.h>
 #include <lcthw/ringbuffer.h>
-#include <lcthw/bstrlib.h>
 #include <lcthw/dbg.h>
+#include <sys/socket.h>
+#include <sys/types.h>
+#include <sys/uio.h>
+#include <arpa/inet.h>
+#include <netdb.h>
 #include <unistd.h>
 #include <fcntl.h>
 #include "net.h"
 
 struct tagbstring NL = bsStatic("\n");
 struct tagbstring CRLF = bsStatic("\r\n");
-
 
 int nonblock(int fd)
 {
@@ -19,6 +25,31 @@ int nonblock(int fd)
 
     return 0;
 error:
+    return -1;
+}
+
+int client_connect(char *host, char *port)
+{
+    int rc = 0;
+    struct addrinfo *addr = NULL;
+
+    rc = getaddrinfo(host, port, NULL, &addr);
+    check(rc == 0, "Failed to lookup %s:%s", host, port);
+
+    int sock = socket(AF_INET, SOCK_STREAM, 0);
+    check(sock >= 0, "Cannot create a socket.");
+
+    rc = connect(sock, addr->ai_addr, addr->ai_addrlen);
+    check(rc == 0, "Connect failed.");
+
+    rc = nonblock(sock);
+    check(rc == 0, "Can't set nonblocking.");
+
+    freeaddrinfo(addr);
+    return sock;
+
+error:
+    freeaddrinfo(addr);
     return -1;
 }
 
@@ -73,23 +104,28 @@ error:
     return -1;
 }
 
-
 int attempt_listen(struct addrinfo *info)
 {
-    int sockfd = 0;
+    int sockfd = -1; // default fail
     int rc = -1;
     int yes = 1;
 
+    check(info != NULL, "Invalid addrinfo.");
+
+    // create a socket with the addrinfo
     sockfd = socket(info->ai_family, info->ai_socktype,
             info->ai_protocol);
-    check_debug(sockfd != -1, "Failed to bind to address result. Trying more.");
+    check_debug(sockfd != -1, "Failed to bind to address. Trying more.");
 
+    // set the SO_REUSEADDR option on the socket
     rc = setsockopt(sockfd, SOL_SOCKET, SO_REUSEADDR, &yes, sizeof(int));
-    check_debug(rc == 0, "Failed to set SO_REISEADDR.");
+    check_debug(rc == 0, "Failed to set SO_REUSADDR.");
 
+    // attempt to bind to it
     rc = bind(sockfd, info->ai_addr, info->ai_addrlen);
-    check_debug(rc == 0, "Failed to bind socket.");
-   
+    check_debug(rc == 0, "Failed to find socket.");
+
+    // finally listen with a backlog
     rc = listen(sockfd, BACKLOG);
     check_debug(rc == 0, "Failed to listen to socket.");
 
@@ -99,10 +135,11 @@ error:
     return -1;
 }
 
+
 int server_listen(const char *host, const char *port)
 {
     int rc = 0;
-    int sockfd = -1;
+    int sockfd = -1; // default fail value
     struct addrinfo *info = NULL;
     struct addrinfo *next_p = NULL;
     struct addrinfo addr = {
@@ -111,51 +148,26 @@ int server_listen(const char *host, const char *port)
         .ai_flags = AI_PASSIVE
     };
 
-    check(host != NULL, "Must give a valid host.");
-    check(port != NULL, "Must have a valid port.");
+    check(host != NULL, "Invalid host.");
+    check(port != NULL, "Invalid port.");
 
+    // get the address info for host and port
     rc = getaddrinfo(NULL, port, &addr, &info);
     check(rc == 0, "Failed to get address info for connect.");
- 
+
+    // cycle through the available list to find one
     for(next_p = info; next_p != NULL; next_p = next_p->ai_next)
     {
+        // attempt to listen to each one
         sockfd = attempt_listen(next_p);
         if(sockfd != -1) break;
     }
 
+    // either we found one and were able to listen or nothing.
     check(sockfd != -1, "All possible addresses failed.");
 
+error: //fallthrough
     if(info) freeaddrinfo(info);
+    // this gets set by the above to either -1 or valid
     return sockfd;
-    
-error: // fallthrough
-    if(info) freeaddrinfo(info);
-    return -1;
 }
-
-
-int client_connect(char *host, char *port)
-{
-    int rc = 0;
-    struct addrinfo *addr = NULL;
-
-    rc = getaddrinfo(host, port, NULL, &addr);
-    check(rc == 0, "Failed to lookup %s:%s", host, port);
-
-    int sock = socket(AF_INET, SOCK_STREAM, 0);
-    check(sock >= 0, "Cannot create a socket.");
-
-    rc = connect(sock, addr->ai_addr, addr->ai_addrlen);
-    check(rc == 0, "Connect failed.");
-
-    rc = nonblock(sock);
-    check(rc == 0, "Can't set nonblocking.");
-
-    freeaddrinfo(addr);
-    return sock;
-
-error:
-    freeaddrinfo(addr);
-    return -1;
-}
-

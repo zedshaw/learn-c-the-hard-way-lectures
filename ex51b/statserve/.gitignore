@@ -6,3 +6,4 @@
 build/*
 tests/*_tests
 bin/statserve
+tags

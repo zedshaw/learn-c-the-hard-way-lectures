@@ -1,5 +1,7 @@
-#include <statserve.h>
+#include <stdio.h>
 #include <lcthw/dbg.h>
+#include "statserve.h"
+#include "net.h"
 
 
 int main(int argc, char *argv[])
@@ -14,5 +16,6 @@ int main(int argc, char *argv[])
     return 0;
 
 error:
+    
     return 1;
 }

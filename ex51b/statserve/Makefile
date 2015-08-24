@@ -1,4 +1,4 @@
-CFLAGS=-g -O2 -Wall -Wextra -Isrc -I/usr/local/include -rdynamic $(OPTFLAGS)
+CFLAGS=-g -O2 -Wall -Wextra -I/usr/local/include -Isrc -rdynamic $(OPTFLAGS)
 LIBS=-llcthw $(OPTLIBS)
 LDFLAGS=-L/usr/local/lib $(LIBS)
 PREFIX?=/usr/local
@@ -18,6 +18,8 @@ all: $(TARGET) $(SO_TARGET) tests bin/statserve
 dev: CFLAGS=-g -Wall -Isrc -Wall -Wextra $(OPTFLAGS)
 dev: all
 
+bin/statserve: $(TARGET)
+
 $(TARGET): CFLAGS += -fPIC
 $(TARGET): build $(OBJECTS)
 	ar rcs $@ $(OBJECTS)
@@ -26,7 +28,7 @@ $(TARGET): build $(OBJECTS)
 $(SO_TARGET): $(TARGET) $(OBJECTS)
 	$(CC) -shared -o $@ $(LDFLAGS) $(LIBS) $(OBJECTS)
 
-bin/statserve: $(TARGET)
+$(TESTS): $(TARGET) $(SO_TARGET)
 
 build:
 	@mkdir -p build
