@@ -1,4 +1,3 @@
-/** WARNING: This code is fresh and potentially isn't correct yet. */
 
 #include <stdlib.h>
 #include <stdio.h>

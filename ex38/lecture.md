@@ -16,19 +16,14 @@ to the Hashmap.
 
 
 
-The Code
+Code Review
 ====
 
 The default is the Jenkin's hash.
 
-Now we'll add the FNV1a, Adler32, and DJB hashing algorithms.
+You added the FNV1a, Adler32, and DJB hashing algorithms.
 
-
-
-The Analysis
-====
-
-For this analysis we will use the unit test's data output and analyze it with R.
+Review the code for FNV1a vs. DJB.
 
 
 

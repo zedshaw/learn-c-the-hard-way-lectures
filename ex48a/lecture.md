@@ -54,8 +54,9 @@ The Clues
 
 I will now give you some clues:
 
+* USE liblcthw!
 * Remember you did a client already, you just need to make a server.
-* You'll want to use select just like you did before.
+* Do NOT use select! Use fork() for the server.
 * Keep it *simple*.  Don't worry about anything other than accepting a connection and closing.
 * Stay small, build slowly.
 

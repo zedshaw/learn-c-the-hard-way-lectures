@@ -24,12 +24,7 @@ I'll show you how I did it after you try it (or you can cheat).
 
 
 
-The Code
-====
-
-
-
-The Analysis
+Code Review
 ====
 
 

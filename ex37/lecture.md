@@ -22,15 +22,11 @@ Hashmaps are very intuitive once you know how a DArray works.
 It's all about the hashing function used.
 
 
-The Code
+
+Code Review
 ====
 
-We'll implement it then write a unit test.
-
-
-
-The Analysis
-====
+Conducting a review of Hashmap by following the test.
 
 
 

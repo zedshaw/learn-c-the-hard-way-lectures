@@ -23,6 +23,7 @@ Execution Keywords
     continue  Continue to the top of a loop.
     do        Start a do-while loop.
     default   Default branch in a switch-statement.
+    else      An else branch of an if-statement.
     for       Start a for-loop.
     goto      Jump to a label.
     if        Starts an if-statement.
@@ -51,7 +52,6 @@ Data Keywords
 
     auto      Give a local variable a local lifetime.
     const     Make a variable unmodifiable.
-    else      An else branch of an if-statement.
     enum      Define a set of int constants.
     extern    Declare an identifier is defined externally.
     register  Declare a variable be stored in a CPU register.
@@ -184,7 +184,6 @@ Typedef
 
 Struct
 ====
-
 
     struct NAME {
         ELEMENTS;

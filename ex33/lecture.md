@@ -13,34 +13,32 @@ The Plan
 
 Learn two sorting algorithms for double linked lists.
 
+Watch how to conduct a simple code review.
+
+
+
+The Code
+====
+
+You should be able to create this and figure out how it works.
+
+I will assume you've done that, and now to code review.
+
 
 
 Bubble Sort
 ====
 
-Explaining how bubble sort works visually.
+Code review of bubble sort.
+
+Start with the unit test and move from there.
 
 
 
 Merge Sort
 ====
 
-Explaining how bubble sort works visually.
-
-
-
-The Unit Test Code
-====
-
-We'll do the unit test for this first since we know what the
-results should be.
-
-
-
-The Implementation
-====
-
-Once we have the test and it's failing we simply implement it.
+Code review of merge sort.
 
 
 

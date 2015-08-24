@@ -8,9 +8,9 @@ void scope_demo(int count)
     log_info("count is: %d", count);
 
     if (count > 10) {
-        int count = 100;	// BAD! BUGS!
+        int numbers = 100;	// BAD! BUGS!
 
-        log_info("count in this scope is %d", count);
+        log_info("count in this scope is %d", numbers);
     }
 
     log_info("count is at exit: %d", count);

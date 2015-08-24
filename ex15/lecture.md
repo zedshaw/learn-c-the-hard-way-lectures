@@ -15,7 +15,25 @@ The Plan
 * Lots of demonstration and visuals.
 
 
+
 The Code
+====
+
+
+
+The Pointer Lexicon
+====
+
+    type *ptr A pointer of type named ptr
+    *ptr The value of whatever ptr is pointed at
+    *(ptr + i) The value of (whatever ptr is pointed at plus i)
+    &thing The address of thing
+    type *ptr = &thing A pointer of type named ptr set to the address of thing
+    ptr++ Increment where ptr points
+
+
+
+Pointers Visually
 ====
 
 
@@ -51,13 +69,18 @@ Extra Credit
 * Add another *for-loop* at the end that prints out the
   addresses that these pointers are using.  You'll need the *%p* format
   for *printf*.
+
+
+
+Extra Credit
+====
+
 * Rewrite this program to use a function for each of the ways you're
   printing out things.  Try to pass pointers to these functions so that
   they work on the data.  Remember you can declare a function to accept
   a pointer, but just use it like an array.
 * Change the *for-loops* to *while-loops* and see what
   works better for which kind of pointer usage.
-
 
 
 

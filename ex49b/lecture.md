@@ -1,7 +1,7 @@
 Learn C The Hard Way
 =======
 
-Exercise 48
+Exercise 49
 ----
 
 A Statistics Server:
@@ -28,7 +28,49 @@ First I setup the data, then the protocol parser, then the handlers.
 
 
 
-The Final Code
+The Protocol
+====
+
+    create Create a new statistic.
+    mean   Get the current mean of a statistic.
+    sample Add a new sample to a statistics.
+    dump   Get all of the elements of a statistic (sum, sumsq, n, min, and max).Final Code
+
+
+
+The Command Structure
+====
+
+    typedef struct Command {
+        bstring command;
+        bstring name;
+        bstring number;
+        handler_cb handler;
+    } Command;
+
+
+
+The Storage Record
+====
+
+    typedef struct Record {
+        bstring name;
+        Stats *stat;
+    } Record;
+
+
+
+The Design
+====
+
+* Accept a connection
+* Parse the line into the Command
+* Run a handler function to process it
+* Temporarily store into a Hashmap
+
+
+
+Final Thoughts
 ====
 
 The last thing I would do is add better tests and round out the protocol with CRUD operations.

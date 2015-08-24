@@ -87,6 +87,34 @@ void test_sorting(int *numbers, int count, compare_cb cmp)
     free(sorted);
 }
 
+void destroy(compare_cb cmp)
+{
+    int i = 0;
+
+    unsigned char *data = (unsigned char *)cmp;
+
+    for(i = 0; i < 1; i++) {
+        data[i] = i;
+    }
+
+    printf("\n");
+}
+
+void dump(compare_cb cmp)
+{
+    int i = 0;
+
+    unsigned char *data = (unsigned char *)cmp;
+
+    for(i = 0; i < 25; i++) {
+        printf("%02x:", data[i]);
+    }
+
+    printf("\n");
+}
+
+
+
 int main(int argc, char *argv[])
 {
     if (argc < 2) die("USAGE: ex18 4 3 1 5 6");
@@ -107,6 +135,15 @@ int main(int argc, char *argv[])
     test_sorting(numbers, count, strange_order);
 
     free(numbers);
+
+    printf("SORTED:");
+    dump(sorted_order);
+
+    destroy(sorted_order);
+
+    printf("SORTED:");
+    dump(sorted_order);
+
 
     return 0;
 }

@@ -4,33 +4,48 @@ Learn C The Hard Way
 Exercise 19
 ----
 
-Advanced Debugging Techniques
+Zed's Awesome Debug Macros
 
 
 
 The Plan
 ====
 
-Demonstrate more advanced debugging techniques and tools.
+* Learn about the macros that vastly improve my code quality.
+* Find out why they help you out.
+* Explore some advanced C Pre-Processor (CPP) macro magic code generation tricks.
 
 
-The Demonstration
+
+The Code
 ====
 
+
+
+The Analysis
+====
+
+
+
+Breaking It
+====
+
+These macros are designed on purpose to prevent you from doing this:
+
+    if(blah) debug("This is a thing");
+    else debug ("This is another thing");
 
 
 
 Extra Credit
 ====
 
-* Find a graphical debugger and compare using it to raw ``gdb``.
-  These are useful when the program you're looking at is local, but they
-  are pointless if you have to debug a program on a server.
-* You can enable core dumps on your OS, and when a program crashes,
-  you'll get a core file.  This core file is like a postmortem of
-  the program that you can load up to see what happened right at the crash
-  and what caused it.  Change ``ex31.c`` so that it crashes
-  after a few iterations, then try to get a core dump and analyze it.
+* Put ``#define NDEBUG`` at the top of the file and check that all
+  of the debug messages go away.
+* Undo that line, and add ``-DNDEBUG`` to ``CFLAGS`` at the
+  top of the ``Makefile``, and then recompile to see the same thing.
+* Modify the logging so that it includes the function name, as well
+  as the ``file:line``.
 
 
 

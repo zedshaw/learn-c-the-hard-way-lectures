@@ -20,15 +20,21 @@ The Plan
 The DArray Code
 ====
 
+Continuing the code review method with a part of DArray.
+
 
 
 The RadixMap Code
 ====
 
+Code review this code next.
+
 
 
 The Binary Search Code
 ====
+
+Finally, code review of the BSTree code.
 
 
 

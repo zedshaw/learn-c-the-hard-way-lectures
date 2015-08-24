@@ -17,11 +17,8 @@ Route URLs
 
 
 
-The Code
+Code Review
 ====
-
-A simple command line tool to play with URLs.
-You'd find this in many web applications.
 
 
 

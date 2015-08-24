@@ -14,15 +14,13 @@ The Plan
 * Learn to use the *select* method and a RingBuffer to write a simple command line network client.
 
 
-
-The Code
+How select Works
 ====
 
 
 
-The Analysis
+Code Review
 ====
-
 
 
 

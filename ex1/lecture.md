@@ -20,6 +20,10 @@ The Plan
 The Code
 ====
 
+https://github.com/zedshaw/learn-c-the-hard-way-lectures
+
+git clone https://github.com/zedshaw/learn-c-the-hard-way-lectures.git
+
 
 
 The Analysis

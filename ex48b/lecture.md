@@ -28,7 +28,9 @@ Watch me solve the first project quickly, then review the code.
 The Setup
 ====
 
-First thing I do is make the project skeleton and get something, anything going.
+First I need to install liblcthw since I'll be using that.
+
+Then I make the project skeleton and get something, anything going.
 
 
 

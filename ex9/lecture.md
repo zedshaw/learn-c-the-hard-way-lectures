@@ -34,7 +34,6 @@ Breaking It
 ====
 
 * Forget to initialize the *int i*.
-* Forget to initialize the second loop's *i* variable.
 * Forget to do an i++ and make it run forever.
 
 

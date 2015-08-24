@@ -16,6 +16,7 @@ Create a handy little tool called devpkg.
 This will be a *lot* of work, so this video is more complete.
 
 
+
 Demonstration
 ====
 
@@ -49,6 +50,7 @@ https://github.com/zedshaw/learn-c-the-hard-way-lectures
 And look in ex41/devpkg for the code.
 
 
+
 Extra Credit
 ====
 
@@ -60,6 +62,7 @@ Extra Credit
   favorite language or the one you think can do this the best.  Compare
   the two, then improve your *C* version of ``devpkg`` based on what
   you've learned.
+
 
 
 End Of Lecture 41

@@ -25,6 +25,11 @@ You can *also* use a Queue of bstrings to do almost the same thing.
 
 
 
+Code Review
+====
+
+
+
 The Analysis
 ====
 
@@ -38,7 +43,7 @@ Pause!
 ====
 
 I will next review the unit test I wrote so if you want to attempt
-solving it yourself then paus now.
+solving it yourself then pause now.
 
 
 

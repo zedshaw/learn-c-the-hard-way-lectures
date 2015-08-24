@@ -40,6 +40,12 @@ Breaking It
   run. For example, getting the file and action backwards will make it create
   a file named after the action, and then do an action based on the first
   character.
+
+
+
+Breaking It
+====
+
 * There's a bug in this program because *strncpy* is poorly
   designed.  Go read about *strncpy* and try to find out what happens
   when the *name* or *address* you give is *greater* than
@@ -59,6 +65,12 @@ Extra Credit
 * Change the code to accept parameters for *MAX_DATA* and *MAX_ROWS*, store them in the *Database* struct, and write that to the file, thus creating
   a database that can be arbitrarily sized.
 * Add more operations you can do with the database, like *find*.
+
+
+
+Extra Credit
+====
+
 * Read about how C does it's struct packing, and then try to see why your
   file is the size it is.  See if you can calculate a new size after adding
   more fields.
@@ -67,10 +79,17 @@ Extra Credit
   by running commands in the right order.  Hint: Use *set -e* at the
   top of a *bash* to make it abort the whole script if any command
   has an error.
+
+
+
+Extra Credit
+====
+
 * Try reworking the program to use a single global for the database connection.
   How does this new version of the program compare to the other one?
 * Go research stack data structure and write one in your favorite language,
   then try to do it in C.
+
 
 
 End Of Lecture 17

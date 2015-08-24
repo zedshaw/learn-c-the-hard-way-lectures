@@ -2,18 +2,14 @@
 #include "ex22.h"
 #include "dbg.h"
 
-int THE_SIZE = 1000;
-
-static int THE_AGE = 37;
-
-int get_age()
+int get_age(struct State *state)
 {
-    return THE_AGE;
+    return state->the_age;
 }
 
-void set_age(int age)
+void set_age(struct State *state, int age)
 {
-    THE_AGE = age;
+   state->the_age = age; 
 }
 
 double update_ratio(double new_ratio)

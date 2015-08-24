@@ -17,6 +17,7 @@ Double Linked Lists
 ----
 
 
+
 Creating A liblcthw Project
 ====
 
@@ -41,22 +42,18 @@ I'll quickly draw some diagrams to show you how they work.
 
 
 
-Double Linked Lists in Python
+Automated Testing Demo
 ====
 
-Now let's see them in Python.
+You can enter the code just fine, but watch me write
+the test.
 
 
 
-The Code
+Code Reviews
 ====
 
-Now we can see the C code.
-
-
-
-The Analysis
-====
+Later videos will demonstrate how to code review to make code solid.
 
 
 

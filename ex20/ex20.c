@@ -1,117 +1,136 @@
 #include "dbg.h"
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <errno.h>
+#include <string.h>
 
-void test_debug()
+/** Our old friend die from ex17. */
+void die(const char *message)
 {
-    // notice you don't need the \n
-    debug("I have Brown Hair.");
-
-    // passing in arguments like printf
-    debug("I am %d years old.", 37);
-}
-
-void test_log_err()
-{
-    log_err("I believe everything is broken.");
-    log_err("There are %d problems in %s.", 0, "space");
-}
-
-void test_log_warn()
-{
-    log_warn("You can safely ignore this.");
-    log_warn("Maybe consider looking at: %s.", "/etc/passwd");
-}
-
-void test_log_info()
-{
-    log_info("Well I did something mundane.");
-    log_info("It happened %f times today.", 1.3f);
-}
-
-int test_check(char *file_name)
-{
-    FILE *input = NULL;
-    char *block = NULL;
-
-    block = malloc(100);
-    check_mem(block);		// should work
-
-    input = fopen(file_name, "r");
-    check(input, "Failed to open %s.", file_name);
-
-    free(block);
-    fclose(input);
-    return 0;
-
-error:
-    if (block) free(block);
-    if (input) fclose(input);
-    return -1;
-}
-
-int test_sentinel(int code)
-{
-    char *temp = malloc(100);
-    check_mem(temp);
-
-    switch (code) {
-        case 1:
-            log_info("It worked.");
-            break;
-        default:
-            sentinel("I shouldn't run.");
+    if (errno) {
+        perror(message);
+    } else {
+        printf("ERROR: %s\n", message);
     }
 
-    free(temp);
-    return 0;
-
-error:
-    if (temp)
-        free(temp);
-    return -1;
+    exit(1);
 }
 
-int test_check_mem()
+// a typedef creates a fake type, in this
+// case for a function pointer
+typedef int (*compare_cb) (int a, int b);
+
+/**
+ * A classic bubble sort function that uses the 
+ * compare_cb to do the sorting. 
+ */
+int *bubble_sort(int *numbers, int count, compare_cb cmp)
 {
-    char *test = NULL;
-    check_mem(test);
+    int temp = 0;
+    int i = 0;
+    int j = 0;
+    int *target = malloc(count * sizeof(int));
 
-    free(test);
-    return 1;
+    if (!target)
+        die("Memory error.");
 
-error:
-    return -1;
+    memcpy(target, numbers, count * sizeof(int));
+
+    for (i = 0; i < count; i++) {
+        for (j = 0; j < count - 1; j++) {
+            if (cmp(target[j], target[j + 1]) > 0) {
+                temp = target[j + 1];
+                target[j + 1] = target[j];
+                target[j] = temp;
+            }
+        }
+    }
+
+    return target;
 }
 
-int test_check_debug()
+int sorted_order(int a, int b)
+{
+    return a - b;
+}
+
+int reverse_order(int a, int b)
+{
+    return b - a;
+}
+
+int strange_order(int a, int b)
+{
+    if (a == 0 || b == 0) {
+        return 0;
+    } else {
+        return a % b;
+    }
+}
+
+/** 
+ * Used to test that we are sorting things correctly
+ * by doing the sort and printing it out.
+ */
+void test_sorting(int *numbers, int count, compare_cb cmp)
 {
     int i = 0;
-    check_debug(i != 0, "Oops, I was 0.");
+    int *sorted = bubble_sort(numbers, count, cmp);
 
-    return 0;
-error:
-    return -1;
+    if (!sorted)
+        die("Failed to sort as requested.");
+
+    for (i = 0; i < count; i++) {
+        printf("%d ", sorted[i]);
+    }
+    printf("\n");
+
+    free(sorted);
 }
+
+
+void dump(compare_cb cmp)
+{
+    int i = 0;
+
+    check(cmp != NULL, "Invalid function ptr to dump.");
+    unsigned char *data = (unsigned char *)cmp;
+
+    for(i = 0; i < 25; i++) {
+        printf("%02x:", data[i]);
+    }
+
+    printf("\n");
+
+error:
+    printf("\n");
+}
+
+
 
 int main(int argc, char *argv[])
 {
-    check(argc == 2, "Need an argument.");
+    if (argc < 2) die("USAGE: ex18 4 3 1 5 6");
 
-    test_debug();
-    test_log_err();
-    test_log_warn();
-    test_log_info();
+    int count = argc - 1;
+    int i = 0;
+    char **inputs = argv + 1;
 
-    check(test_check("ex20.c") == 0, "failed with ex20.c");
-    check(test_check(argv[1]) == -1, "failed with argv");
-    check(test_sentinel(1) == 0, "test_sentinel failed.");
-    check(test_sentinel(100) == -1, "test_sentinel failed.");
-    check(test_check_mem() == -1, "test_check_mem failed.");
-    check(test_check_debug() == -1, "test_check_debug failed.");
+    int *numbers = malloc(count * sizeof(int));
+    if (!numbers) die("Memory error.");
+
+    for (i = 0; i < count; i++) {
+        numbers[i] = atoi(inputs[i]);
+    }
+
+    test_sorting(numbers, count, sorted_order);
+    test_sorting(numbers, count, reverse_order);
+    test_sorting(numbers, count, strange_order);
+
+    free(numbers);
+
+    printf("SORTED:");
+    dump(numbers);
 
     return 0;
-
-error:
-    return 1;
 }

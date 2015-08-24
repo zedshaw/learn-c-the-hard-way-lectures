@@ -15,6 +15,7 @@ The Plan
 * Learn to use pointers to work with *structs* better.
 
 
+
 The Code
 ====
 
@@ -37,6 +38,12 @@ Breaking It
   to free the memory.  Figure out the options you need to pass
   to the debugger to get it to print how you leaked
   this memory.
+
+
+
+Breaking It
+====
+
 * Forget to free *who->name* in *Person_destroy*
   and compare the output.  Again, use the right options to
   see how the debugger tells you exactly where you messed
@@ -55,6 +62,7 @@ Extra Credit
   instead of the *x->y* syntax.
 * How to pass a structure to other functions without using
   a pointer.
+
 
 
 End Of Lecture 16

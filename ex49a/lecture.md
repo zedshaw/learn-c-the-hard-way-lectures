@@ -21,7 +21,7 @@ Make the *statsserver* do something using a simple protocol.
 The Purpose
 ====
 
-Learn the first steps in create a server that answers a protocol.
+Learn the first steps in creating a server that answers a protocol.
 
 
 
@@ -42,7 +42,16 @@ The Requirements
 
 1. You'll need to allow people to name these statistics, which means using one of the map style data structures to map names to ``Stats`` structs.
 2. You'll need to add the ``CRUD`` standard operations for each name.  CRUD stands for create read update delete.  Currently, the list of commands above has create, mean, and dump for reading; and sample for updating.  You need a delete command now.
-3. You may also need to have a ``list`` command for listing out all of the available statistics in the server.
+3. Make the protocol *strict*! Abort any client that makes any mistakes in protocols.
+
+
+
+Strict Protocol
+====
+
+Once again, in case you missed it, be ruthless!
+
+Abort all deviant clients.
 
 
 Pause!

@@ -46,6 +46,12 @@ Extra Credit
   to *print_letters*.  Then, rewrite *print_letters*
   so it only processes this fixed length and doesn't rely on the
   *'\0'* terminator.  You'll need the *#include <string.h>* for this.
+
+
+
+Extra Credit
+====
+
 * Use *man* to look up information on *isalpha*
   and *isblank*.  Use other similar functions to
   print out only digits or other characters.

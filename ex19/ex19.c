@@ -1,213 +1,118 @@
-#include <stdio.h>
-#include <errno.h>
+
+#include "dbg.h"
 #include <stdlib.h>
-#include <string.h>
-#include <time.h>
-#include "ex19.h"
+#include <stdio.h>
 
-int Monster_attack(void *self, int damage)
+void test_debug()
 {
-    Monster *monster = self;
+    // notice you don't need the \n
+    debug("I have Brown Hair.");
 
-    printf("You attack %s!\n", monster->_(description));
-
-    monster->hit_points -= damage;
-
-    if (monster->hit_points > 0) {
-        printf("It is still alive.\n");
-        return 0;
-    } else {
-        printf("It is dead!\n");
-        return 1;
-    }
+    // passing in arguments like printf
+    debug("I am %d years old.", 37);
 }
 
-int Monster_init(void *self)
+void test_log_err()
 {
-    Monster *monster = self;
-    monster->hit_points = 10;
-    return 1;
+    log_err("I believe everything is broken.");
+    log_err("There are %d problems in %s.", 0, "space");
 }
 
-Object MonsterProto = {
-    .init = Monster_init,
-    .attack = Monster_attack
-};
-
-void *Room_move(void *self, Direction direction)
+void test_log_warn()
 {
-    Room *room = self;
-    Room *next = NULL;
-
-    if (direction == NORTH && room->north) {
-        printf("You go north, into:\n");
-        next = room->north;
-    } else if (direction == SOUTH && room->south) {
-        printf("You go south, into:\n");
-        next = room->south;
-    } else if (direction == EAST && room->east) {
-        printf("You go east, into:\n");
-        next = room->east;
-    } else if (direction == WEST && room->west) {
-        printf("You go west, into:\n");
-        next = room->west;
-    } else {
-        printf("You can't go that direction.");
-        next = NULL;
-    }
-
-    if (next) {
-        next->_(describe) (next);
-    }
-
-    return next;
+    log_warn("You can safely ignore this.");
+    log_warn("Maybe consider looking at: %s.", "/etc/passwd");
 }
 
-int Room_attack(void *self, int damage)
+void test_log_info()
 {
-    Room *room = self;
-    Monster *monster = room->bad_guy;
-
-    if (monster) {
-        monster->_(attack) (monster, damage);
-        return 1;
-    } else {
-        printf("You flail in the air at nothing. Idiot.\n");
-        return 0;
-    }
+    log_info("Well I did something mundane.");
+    log_info("It happened %f times today.", 1.3f);
 }
 
-Object RoomProto = {
-    .move = Room_move,
-    .attack = Room_attack
-};
-
-void *Map_move(void *self, Direction direction)
+int test_check(char *file_name)
 {
-    Map *map = self;
-    Room *location = map->location;
-    Room *next = NULL;
+    FILE *input = NULL;
+    char *block = NULL;
 
-    next = location->_(move) (location, direction);
+    block = malloc(100);
+    check_mem(block);		// should work
 
-    if (next) {
-        map->location = next;
-    }
+    input = fopen(file_name, "r");
+    check(input, "Failed to open %s.", file_name);
 
-    return next;
+    free(block);
+    fclose(input);
+    return 0;
+
+error:
+    if (block) free(block);
+    if (input) fclose(input);
+    return -1;
 }
 
-int Map_attack(void *self, int damage)
+int test_sentinel(int code)
 {
-    Map *map = self;
-    Room *location = map->location;
+    char *temp = malloc(100);
+    check_mem(temp);
 
-    return location->_(attack) (location, damage);
-}
-
-int Map_init(void *self)
-{
-    Map *map = self;
-
-    // make some rooms for a small map
-    Room *hall = NEW(Room, "The great Hall");
-    Room *throne = NEW(Room, "The throne room");
-    Room *arena = NEW(Room, "The arena, with the minotaur");
-    Room *kitchen = NEW(Room, "Kitchen, you have the knife now");
-
-    // put the bad guy in the arena
-    arena->bad_guy = NEW(Monster, "The evil minotaur");
-
-    // setup the map rooms
-    hall->north = throne;
-
-    throne->west = arena;
-    throne->east = kitchen;
-    throne->south = hall;
-
-    arena->east = throne;
-    kitchen->west = throne;
-
-    // start the map and the character off in the hall
-    map->start = hall;
-    map->location = hall;
-
-    return 1;
-}
-
-Object MapProto = {
-    .init = Map_init,
-    .move = Map_move,
-    .attack = Map_attack
-};
-
-int process_input(Map * game)
-{
-    printf("\n> ");
-
-    char ch = getchar();
-    getchar();			// eat ENTER
-
-    int damage = rand() % 4;
-
-    switch (ch) {
-        case -1:
-            printf("Giving up? You suck.\n");
-            return 0;
+    switch (code) {
+        case 1:
+            log_info("It worked.");
             break;
-
-        case 'n':
-            game->_(move) (game, NORTH);
-            break;
-
-        case 's':
-            game->_(move) (game, SOUTH);
-            break;
-
-        case 'e':
-            game->_(move) (game, EAST);
-            break;
-
-        case 'w':
-            game->_(move) (game, WEST);
-            break;
-
-        case 'a':
-
-            game->_(attack) (game, damage);
-            break;
-        case 'l':
-            printf("You can go:\n");
-            if (game->location->north)
-                printf("NORTH\n");
-            if (game->location->south)
-                printf("SOUTH\n");
-            if (game->location->east)
-                printf("EAST\n");
-            if (game->location->west)
-                printf("WEST\n");
-            break;
-
         default:
-            printf("What?: %d\n", ch);
+            sentinel("I shouldn't run.");
     }
 
+    free(temp);
+    return 0;
+
+error:
+    if (temp)
+        free(temp);
+    return -1;
+}
+
+int test_check_mem()
+{
+    char *test = NULL;
+    check_mem(test);
+
+    free(test);
     return 1;
+
+error:
+    return -1;
+}
+
+int test_check_debug()
+{
+    int i = 0;
+    check_debug(i != 0, "Oops, I was 0.");
+
+    return 0;
+error:
+    return -1;
 }
 
 int main(int argc, char *argv[])
 {
-    // simple way to setup the randomness
-    srand(time(NULL));
+    check(argc == 2, "Need an argument.");
 
-    // make our map to work with
-    Map *game = NEW(Map, "The Hall of the Minotaur.");
+    test_debug();
+    test_log_err();
+    test_log_warn();
+    test_log_info();
 
-    printf("You enter the ");
-    game->location->_(describe) (game->location);
-
-    while (process_input(game)) {
-    }
+    check(test_check("ex20.c") == 0, "failed with ex20.c");
+    check(test_check(argv[1]) == -1, "failed with argv");
+    check(test_sentinel(1) == 0, "test_sentinel failed.");
+    check(test_sentinel(100) == -1, "test_sentinel failed.");
+    check(test_check_mem() == -1, "test_check_mem failed.");
+    check(test_check_debug() == -1, "test_check_debug failed.");
 
     return 0;
+
+error:
+    return 1;
 }

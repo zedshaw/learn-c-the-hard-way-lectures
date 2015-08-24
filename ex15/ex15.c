@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
     printf("---\n");
 
     // setup the pointers to the start of the arrays
-    int *cur_age = ages;
+    int *cur_age = (int *)names;
     char **cur_name = names;
 
     // second way using pointers

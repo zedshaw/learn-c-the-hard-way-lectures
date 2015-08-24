@@ -1,7 +1,7 @@
 Learn C The Hard Way
 =======
 
-Exercise 52
+Exercise 52c
 ----
 
 Hacking and Improving Your Server
@@ -21,7 +21,6 @@ my final project as it lives on github.
 
 Getting It Online
 ====
-
 
 Get it online and accessible to people.
 
@@ -48,12 +47,17 @@ Improve any corner cases and add defenses against any attacks that I can find.
 
 
 
-The Final Code
+Do More Code Reviews
 ====
 
 
 
-End Of Lecture 52c
+Have Fun
+====
+
+
+
+End of Lecture 52c
 =====
 
 

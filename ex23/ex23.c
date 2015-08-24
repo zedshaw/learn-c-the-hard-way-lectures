@@ -47,6 +47,8 @@ int zeds_device(char *from, char *to, int count)
 {
     {
         int n = (count + 7) / 8;
+        debug("n starts: %d, count: %d, count%%8: %d", 
+                n, count, count % 8);
 
         switch (count % 8) {
             case 0:
@@ -66,8 +68,11 @@ again:    *to++ = *from++;
           *to++ = *from++;
             case 1:
           *to++ = *from++;
-          if (--n > 0)
+          debug("last case: n=%d", n);
+          if (--n > 0) {
+              debug("going again: n=%d", n);
               goto again;
+          }
         }
     }
 
@@ -89,36 +94,36 @@ int valid_copy(char *data, int count, char expects)
 
 int main(int argc, char *argv[])
 {
-    char from[1000] = { 'a' };
-    char to[1000] = { 'c' };
+    char from[1003] = { 'a' };
+    char to[1003] = { 'c' };
     int rc = 0;
 
     // setup the from to have some stuff
-    memset(from, 'x', 1000);
+    memset(from, 'x', 1003);
     // set it to a failure mode
-    memset(to, 'y', 1000);
-    check(valid_copy(to, 1000, 'y'), "Not initialized right.");
+    memset(to, 'y', 1003);
+    check(valid_copy(to, 1003, 'y'), "Not initialized right.");
 
     // use normal copy to 
-    rc = normal_copy(from, to, 1000);
-    check(rc == 1000, "Normal copy failed: %d", rc);
-    check(valid_copy(to, 1000, 'x'), "Normal copy failed.");
+    rc = normal_copy(from, to, 1003);
+    check(rc == 1003, "Normal copy failed: %d", rc);
+    check(valid_copy(to, 1003, 'x'), "Normal copy failed.");
 
     // reset
-    memset(to, 'y', 1000);
+    memset(to, 'y', 1003);
 
     // duffs version
-    rc = duffs_device(from, to, 1000);
-    check(rc == 1000, "Duff's device failed: %d", rc);
-    check(valid_copy(to, 1000, 'x'), "Duff's device failed copy.");
+    rc = duffs_device(from, to, 1003);
+    check(rc == 1003, "Duff's device failed: %d", rc);
+    check(valid_copy(to, 1003, 'x'), "Duff's device failed copy.");
 
     // reset
-    memset(to, 'y', 1000);
+    memset(to, 'y', 1003);
 
     // my version
-    rc = zeds_device(from, to, 1000);
-    check(rc == 1000, "Zed's device failed: %d", rc);
-    check(valid_copy(to, 1000, 'x'), "Zed's device failed copy.");
+    rc = zeds_device(from, to, 1003);
+    check(rc == 1003, "Zed's device failed: %d", rc);
+    check(valid_copy(to, 1003, 'x'), "Zed's device failed copy.");
 
     return 0;
 error:

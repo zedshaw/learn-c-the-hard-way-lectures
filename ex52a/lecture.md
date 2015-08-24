@@ -1,7 +1,7 @@
 Learn C The Hard Way
 =======
 
-Exercise 52
+Exercise 52a
 ----
 
 Hacking and Improving Your Server:
@@ -25,10 +25,11 @@ Turn on defensive mode and destroy what you've created to make it better.
 
 
 
-Your Protocol Is Junk
+My Protocol Is Junk
 ====
 
-"What?! But you told me to write it!"
+The protocol should have specified sizes of elements,
+or a correctly written parser using a parser generator.
 
 
 
@@ -49,7 +50,7 @@ Protocols without exact grammars *or* fixed size elements will be hacked.
 
 
 
-Your Disk Storage Is Junk
+My Disk Storage Is Junk
 ====
 
 "What?! C'mon!"
@@ -77,14 +78,17 @@ Watch for arbitrary paths and *always* sanitize them.
 
 
 
-Other Ways To Break It
+First Code Review
 ====
 
-Review your own code using our defensive techniques and see if you can find more holes.  How many can you find?
+I'll now do a "first pass" code review.
+
+I just go through quick, looking for bugs and drop BUG: comments.
 
 
 
-End Of Lecture 52a
+
+End of Lecture 52a
 =====
 
 

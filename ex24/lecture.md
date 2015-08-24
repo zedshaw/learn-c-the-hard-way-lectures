@@ -29,7 +29,7 @@ The Analysis
 Breaking It
 ====
 
-* Trying out *fscanf* and the problems with *scanf*.
+* Trying out *fgets* and the problems with *gets*.
 * Feed it */dev/urandom* to give it garbage.
 
 

@@ -11,9 +11,7 @@ String Algorithms
 The Plan
 ====
 
-Implement the Boyer-Moore-Horspool string search algorithm.
-Use statistics to see if it beats the one in *bstrlib*.
-
+Develop a formal code review procedure.
 
 
 The Code
@@ -24,19 +22,40 @@ at this point.  Focus on getting the unit test right.
 
 
 
-The Analysis
+Code Review Process
 ====
 
-We will now use the data from the unit test to see if BMH is faster than
-binstr.  Could have surprising results on a different computer.
+
+
+1. Start at the entry point for a piece of code that has changed.
+2. For each function, confirm that its calling parameters are correct.
+3. Enter that function, and confirm each line's correctness.
+4. When you encounter a function, repeat up to #2 until you go no further.
+5. As you exit functions, confirm the return values and their usage.
+6. Continue until you are back where you started at the entry point.
+7. Do a diff on your changes, and confirm any missed calls to changed functions.
 
 
 
-Breaking It
+Code Review Key Points
 ====
 
-In this exercise I want you to break the analysis rather than find out
-how to break the code.  How can you get the stats wrong?  I'll show you.
+1. Check your pointer dereferences and defend against NULL.
+2. Check if-statements and while loops for exiting.
+3. Check return values are going to be valid.
+4. Check that memory allocated is freed and other resources freed.
+5. Confirm all system call parameters are correct with man pages.
+
+
+
+Record Your Code Review
+====
+
+I want *you* to try to record yourself coding and reviewing your
+code.  What do you learn from this experience?
+
+What if you kept track of the number of mistakes you found in
+your code reviews and analyzed the data?
 
 
 

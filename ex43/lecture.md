@@ -16,12 +16,7 @@ The Plan
 
 
 
-The Code
-====
-
-
-
-The Analysis
+Comparing Test vs. R
 ====
 
 I'll use R to show you how this works vs. normal calculations using all data.
