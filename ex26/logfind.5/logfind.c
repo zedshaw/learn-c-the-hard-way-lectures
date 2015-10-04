@@ -10,17 +10,16 @@ const size_t MAX_LINE = 1024;
 
 int list_files(glob_t *pglob) 
 {
-    char *line = calloc(MAX_LINE, 1);
+    char line[MAX_LINE];
     FILE *file = fopen(".logfind", "r");
     int glob_flags = GLOB_TILDE;
     int i = 0;
     int rc = -1;
 
     check(pglob != NULL, "Invalid glob_t given.");
-    check_mem(line);
     check(file, "Failed to open .logfind. Make that first.");
 
-    while(fgets(line, MAX_LINE-1, file) != NULL) {
+    while(fgets(line, MAX_LINE, file) != NULL) {
         line[strlen(line) - 1] = '\0'; // drop the \n ending
         debug("Globbing %s", line);
 
@@ -38,7 +37,6 @@ int list_files(glob_t *pglob)
     rc = 0; // all good
 
 error: // fallthrough
-    if(line) free(line);
     return rc;
 }
 
@@ -57,16 +55,15 @@ int found_it(int use_or, int found_count, int search_len)
 
 int scan_file(const char *filename, int use_or, int search_len, char *search_for[])
 {
-    char *line = calloc(MAX_LINE, 1);
+    char line[MAX_LINE];
     FILE *file = fopen(filename, "r");
     int found_count = 0;
     int i = 0;
 
-    check_mem(line);
     check(file, "Failed to open file: %s", filename);
 
     // read each line of the file and search that line for the contents
-    while(fgets(line, MAX_LINE-1, file) != NULL)
+    while(fgets(line, MAX_LINE, file) != NULL)
     {
         for(i = 0; i < search_len; i++) {
             if(strcasestr(line, search_for[i]) != NULL) {
@@ -84,12 +81,10 @@ int scan_file(const char *filename, int use_or, int search_len, char *search_for
     }
 
 
-    free(line);
     fclose(file);
     return 0;
 
 error:
-    if(line) free(line);
     if(file) fclose(file);
 
     return -1;
