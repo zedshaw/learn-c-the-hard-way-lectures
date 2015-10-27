@@ -24,7 +24,7 @@ int main(int argc, char *argv[])
     name[0] = 'Z';
     name[1] = 'e';
     name[2] = 'd';
-    name[3] = 'A';
+    name[3] = '\0';
 
     // then print them out initialized
     printf("numbers: %d %d %d %d\n",
