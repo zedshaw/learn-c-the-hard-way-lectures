@@ -7,7 +7,7 @@ int main(int argc, char *argv[])
     char full_name[] = {
         'Z', 'e', 'd',
         ' ', 'A', '.', ' ',
-        'S', 'h', 'a', 'w' 
+        'S', 'h', 'a', 'w', '\0'
     };
 
     // WARNING: On some systems you may have to change the
