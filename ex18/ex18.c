@@ -20,8 +20,8 @@ void die(const char *message)
 typedef int (*compare_cb) (int a, int b);
 
 /**
- * A classic bubble sort function that uses the 
- * compare_cb to do the sorting. 
+ * A classic bubble sort function that uses the
+ * compare_cb to do the sorting.
  */
 int *bubble_sort(int *numbers, int count, compare_cb cmp)
 {
@@ -67,7 +67,7 @@ int strange_order(int a, int b)
     }
 }
 
-/** 
+/**
  * Used to test that we are sorting things correctly
  * by doing the sort and printing it out.
  */
@@ -113,8 +113,6 @@ void dump(compare_cb cmp)
     printf("\n");
 }
 
-
-
 int main(int argc, char *argv[])
 {
     if (argc < 2) die("USAGE: ex18 4 3 1 5 6");
@@ -143,7 +141,6 @@ int main(int argc, char *argv[])
 
     printf("SORTED:");
     dump(sorted_order);
-
 
     return 0;
 }
