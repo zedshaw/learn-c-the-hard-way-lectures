@@ -1,6 +1,6 @@
 #include "minunit.h"
 
-char *test_dlopen(int stuff)
+char *test_dlopen()
 {
     return NULL;
 }
