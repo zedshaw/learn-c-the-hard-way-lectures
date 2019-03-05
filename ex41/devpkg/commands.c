@@ -98,7 +98,7 @@ int Command_fetch(apr_pool_t * p, const char *url, int fetch_only)
         rc = Shell_exec(TAR_SH, "FILE", TAR_BZ2_SRC, NULL);
         check(rc == 0, "Failed to untar %s", TAR_BZ2_SRC);
     } else {
-        sentinel("Don't now how to handle %s", url);
+        sentinel("Don't know how to handle %s", url);
     }
 
     // indicates that an install needs to actually run
