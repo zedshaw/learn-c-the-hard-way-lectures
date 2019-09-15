@@ -42,6 +42,8 @@ int client_connect(char *host, char *port)
     rc = connect(sock, addr->ai_addr, addr->ai_addrlen);
     check(rc == 0, "Connect failed.");
 
+    // Only needed incase select malfunctions
+    // and lets though a blocking fd
     rc = nonblock(sock);
     check(rc == 0, "Can't set nonblocking.");
 
