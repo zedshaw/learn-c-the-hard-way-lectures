@@ -126,7 +126,7 @@ char *test_store_load()
         {.line = "delete /sam", .result = &OK, .description = "load zed failed"},
     };
 
-    mu_assert(run_test_lines(tests, 3), "Failed to run sample tests.");
+    mu_assert(run_test_lines(tests, 5), "Failed to run sample tests.");
 
     return NULL;
 }
