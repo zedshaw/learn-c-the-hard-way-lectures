@@ -1,19 +1,15 @@
 #ifndef _ex22_h
 #define _ex22_h
 
+// Makes the_size available in other .c files
 struct State {
     int the_size;
     int the_age;
 };
-
-
-// gets and sets an internal static variable in ex22.c
 int get_age(struct State *state);
 void set_age(struct State *state, int age);
-
-// updates a static variable that's inside update_ratio
+int get_size(struct State *state);
+void set_size(struct State *state, int size);
 double update_ratio(double ratio);
-
-void print_size();
-
+void print_size(struct State *state);
 #endif
