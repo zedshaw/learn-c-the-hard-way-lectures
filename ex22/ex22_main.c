@@ -1,10 +1,8 @@
 #include "ex22.h"
 #include "dbg.h"
-#include <stdlib.h>
 
 const char *MY_NAME = "Sam Olembo";
 struct State state = { .the_size=2, .the_age=3 };
-//struct State *state = malloc(sizeof(my_state));
 void scope_demo(int count)
 {
     log_info("count is %d", count);
@@ -37,6 +35,5 @@ int main(int argc, char *argv[])
     scope_demo(count);
     scope_demo(count * 20);
     log_info("count after calling scope_demo: %d", count);
-    //free(state);
     return 0;
 }
