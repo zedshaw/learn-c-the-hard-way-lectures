@@ -1,4 +1,1 @@
-Learn C The Hard Way, Lectures
-==============================
-
-This is a publicly accessible repository of code for readers of my book Learn C The Hard Way, including the lecture slides and code I create for each exercise and video.
+VimCrypt~03!Àœev…öü%C€üÇ<Üžñpøk¹FÑXoî”9îp¤Éo¼;s\·¥8¥eS
